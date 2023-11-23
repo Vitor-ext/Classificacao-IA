@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+venv*/
+
+# Flask
+instance/
+.webassets-cache
+
+# IDE files
+.idea/
+
+# Compiled source
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Compiled Python files
+*.pyc
+
+# Flask env
+.env
+
+# Kaggle API key
+kaggle.json

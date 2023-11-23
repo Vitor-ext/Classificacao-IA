@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Câncer de Mama</title>
+     <link rel="stylesheet" href="../static/style/style.css">
+</head>
+<body>
+    <h1>Insira os dados do exame</h1>
+    <form method="post" action="/classify">
+        {% for i in range(1, 31) %}
+            <label for="feature{{ i }}">Feature {{ i }}:</label>
+            <input type="text" name="feature{{ i }}" required>
+            <br>
+        {% endfor %}
+        <button type="submit">Classificar</button>
+    </form>
+
+    <h2>Resultado da Classificação:</h2>
+    <p id="result"></p>
+    <p id="accuracy"></p>
+    <p id="conf_matrix"></p>
+    <p id="class_report"></p>
+
+    <script>
+        function classify() {
+            var form = document.getElementById("classificationForm");
+            var formData = new FormData(form);
+
+            fetch('/classify', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("result").innerText = "Resultado: " + data.result;
+                document.getElementById("accuracy").innerText = "Acurácia: " + data.accuracy;
+                document.getElementById("conf_matrix").innerText = "Matriz de Confusão: " + JSON.stringify(data.conf_matrix);
+                document.getElementById("class_report").innerText = "Relatório de Classificação: " + data.class_report;
+            })
+            .catch(error => console.error('Erro:', error));
+        }
+    </script>
+</body>
+
+    <footer>
+       🚀❣🚀 Vitor de Jesus 🚀❣🚀
+    </footer>
+</body>
+</html>
+
+
+
+
+
+

@@ -1,9 +1,10 @@
-from flask import render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify
 from app import app
 from app.classificacao import LogisticRegression
 
 model = LogisticRegression()
 
+app = Flask(__name__)
 @app.route('/')
 def index():
     return render_template('index.html')

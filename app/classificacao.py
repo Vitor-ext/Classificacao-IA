@@ -33,6 +33,9 @@ conf_matrix = confusion_matrix(y_test, y_pred)
 class_report = classification_report(y_test, y_pred)
 
 # Exibindo os resultados
-print("Accuracy:", accuracy)
+print("Accuracy:", accuracy, "\n")
+
 print("\nConfusion Matrix:\n", conf_matrix)
+print("             Predito Negativo  |  Predito Positivo \nReal Negativo   TN                     FP\nReal Positivo   FN                     TP")
+
 print("\nClassification Report:\n", class_report)
